@@ -8,7 +8,7 @@ resource "aws_key_pair" "mykey" {
 
 
 resource "aws_instance" "web" {
-    ami           = "ami-085386e29e44dacd7"
+    ami = "ami-0a7d80731ae1b2435"
     instance_type = "t2.micro"
     tags = {
         Name = "Best-EC2-Container"

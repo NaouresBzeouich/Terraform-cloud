@@ -1,3 +1,4 @@
+---
 - name: Déployer l'image Docker sur l'instance EC2
   hosts: web
   become: true
@@ -7,12 +8,16 @@
       apt:
         name: docker.io
         state: present
+        update_cache: true
       tags: docker
 
     - name: Lancer le conteneur Docker
       docker_container:
         name: myapp
-        image: myapp:latest
+        image: nginx:latest
         state: started
         restart_policy: always
+        published_ports:
+          - "80:80"
+
       tags: docker
